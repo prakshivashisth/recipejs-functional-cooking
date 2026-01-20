@@ -71,6 +71,12 @@ const recipeContainer = document.querySelector('#recipe-container');
 
 console.log(recipeContainer);
 
+
+let currentFilter = "ALL";   // ALL, EASY, MEDIUM, HARD, QUICK
+let currentSort = "NONE";   // NAME, TIME
+
+
+
 // Function to create HTML for a single recipe card
 const createRecipeCard = (recipe) => {
     return `
@@ -97,8 +103,52 @@ const renderRecipes = (recipesToRender) => {
 };
 
 // Initialize: Render all recipes when page loads
-renderRecipes(recipes);
+
 
 console.log('Total recipes:', recipes.length);
 console.log('First recipe:', recipes[0]);
 console.log('Rendering complete!');
+
+
+const filterRecipes = (recipes, filterType) => {
+    switch (filterType) {
+        case "EASY":
+            return recipes.filter(r => r.difficulty === "easy");
+        case "MEDIUM":
+            return recipes.filter(r => r.difficulty === "medium");
+        case "HARD":
+            return recipes.filter(r => r.difficulty === "hard");
+        case "QUICK":
+            return recipes.filter(r => r.time < 30);
+        case "ALL":
+        default:
+            return recipes;
+    }
+};
+const sortRecipes = (recipes, sortType) => {
+    const copy = [...recipes]; // prevent mutation
+
+    switch (sortType) {
+        case "NAME":
+            return copy.sort((a, b) => a.title.localeCompare(b.title));
+        case "TIME":
+            return copy.sort((a, b) => a.time - b.time);
+        default:
+            return copy;
+    }
+};
+const updateDisplay = () => {
+    const filtered = filterRecipes(recipes, currentFilter);
+    const sorted = sortRecipes(filtered, currentSort);
+    renderRecipes(sorted);
+};
+const setFilter = (filterType) => {
+    currentFilter = filterType;
+    updateDisplay();
+};
+
+const setSort = (sortType) => {
+    currentSort = sortType;
+    updateDisplay();
+};
+updateDisplay();
