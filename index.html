@@ -14,9 +14,28 @@
     </header>
 
     <main>
+
+        <!-- Controls Section: Filters and Sorting -->
+        <div class="controls">
+            <div class="filters">
+                <button onclick="setFilter('ALL')">All</button>
+                <button onclick="setFilter('EASY')">Easy</button>
+                <button onclick="setFilter('MEDIUM')">Medium</button>
+                <button onclick="setFilter('HARD')">Hard</button>
+                <button onclick="setFilter('QUICK')">Quick (&lt; 30 min)</button>
+            </div>
+
+            <div class="sort">
+                <button onclick="setSort('NAME')">Sort by Name</button>
+                <button onclick="setSort('TIME')">Sort by Time</button>
+            </div>
+        </div>
+
+        <!-- Recipe Cards Container -->
         <div id="recipe-container">
             <!-- Recipe cards will be rendered here by JavaScript -->
         </div>
+
     </main>
 
     <script src="app.js"></script>
