@@ -11,29 +11,49 @@
     <header>
         <h1>🍳 RecipeJS</h1>
         <p>Your Functional Cooking Companion</p>
+
+        <!-- 🔍 Search Bar -->
+        <div class="search-bar">
+            <input 
+                type="text" 
+                id="search-input" 
+                placeholder="Search recipes or ingredients..." 
+            />
+            <button id="clear-search" hidden>✖</button>
+        </div>
     </header>
 
     <main>
 
-        <!-- Controls Section: Filters and Sorting -->
+        <!-- Controls Section -->
         <div class="controls">
+
+            <!-- Filters -->
             <div class="filters">
-                <button onclick="setFilter('ALL')">All</button>
-                <button onclick="setFilter('EASY')">Easy</button>
-                <button onclick="setFilter('MEDIUM')">Medium</button>
-                <button onclick="setFilter('HARD')">Hard</button>
-                <button onclick="setFilter('QUICK')">Quick (&lt; 30 min)</button>
+                <button onclick="RecipeApp.setFilter('ALL')">All</button>
+                <button onclick="RecipeApp.setFilter('EASY')">Easy</button>
+                <button onclick="RecipeApp.setFilter('MEDIUM')">Medium</button>
+                <button onclick="RecipeApp.setFilter('HARD')">Hard</button>
+                <button onclick="RecipeApp.setFilter('QUICK')">Quick (&lt; 30 min)</button>
+                <button onclick="RecipeApp.setFilter('FAVORITES')">❤️ Favorites</button>
             </div>
 
+            <!-- Sorting -->
             <div class="sort">
-                <button onclick="setSort('NAME')">Sort by Name</button>
-                <button onclick="setSort('TIME')">Sort by Time</button>
+                <button onclick="RecipeApp.setSort('NAME')">Sort by Name</button>
+                <button onclick="RecipeApp.setSort('TIME')">Sort by Time</button>
             </div>
+
+        </div>
+
+        <!-- 🔢 Recipe Counter -->
+        <div id="recipe-counter" class="recipe-counter">
+            Showing 0 of 0 recipes
         </div>
 
         <!-- Recipe Cards Container -->
         <div id="recipe-container">
-            <!-- Recipe cards will be rendered here by JavaScript -->
+            <!-- Recipe cards will be rendered here -->
         </div>
 
     </main>
