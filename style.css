@@ -31,11 +31,82 @@ header p {
     opacity: 0.9;
 }
 
+/* 🔍 Search Bar */
+.search-bar {
+    margin-top: 1.2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.search-bar input {
+    padding: 0.6rem 1rem;
+    border-radius: 25px;
+    border: none;
+    width: 260px;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+#clear-search {
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
 /* Main Container */
 main {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
+}
+
+/* Controls Section */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filters, .sort {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.controls button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #667eea;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.controls button:hover {
+    background-color: #5a6fd6;
+    transform: translateY(-2px);
+}
+
+.controls button.active {
+    background-color: #4c5fd7;
+    box-shadow: 0 0 0 2px white inset;
+}
+
+/* 🔢 Recipe Counter */
+.recipe-counter {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    color: #555;
+    text-align: right;
 }
 
 /* Recipe Container - Flexbox Grid */
@@ -53,6 +124,7 @@ main {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     padding: 1.5rem;
     width: 300px;
+    position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -102,33 +174,39 @@ main {
     background-color: #f8d7da;
     color: #721c24;
 }
-/* Controls Section */
-.controls {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
 
-.filters, .sort {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-}
-
-.controls button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 20px;
-    background-color: #667eea;
-    color: white;
+/* ❤️ Favorite Icon */
+.favorite {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 1.2rem;
     cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: #ccc;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.controls button:hover {
-    background-color: #5a6fd6;
-    transform: translateY(-2px);
+.favorite.active {
+    color: #ff4d6d;
+    transform: scale(1.2);
+}
+
+/* Empty State */
+.empty-message {
+    font-size: 1.1rem;
+    color: #777;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .recipe-counter {
+        text-align: center;
+    }
 }
